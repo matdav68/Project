@@ -42,8 +42,14 @@ def generate_password(length=16, charset=None):
     return ''.join(secrets.choice(charset) for _ in range(length))
 
 def main(argv=None):
+    n = input("Pick a number from 8 to 24: ")
+    if not n.isdigit():
+        raise TypeError("You did not choose a number")
+    n = int(n)
+    if n < 8 or n > 24:
+        raise ValueError("Number chosen is not in range")
     parser = argparse.ArgumentParser(description="Secure password generator")
-    parser.add_argument('-l', '--length', type=int, default=16, help='Length of each password (default: 16)')
+    parser.add_argument('-l', '--length', type=int, default=n, help='Length of each password (default: 16)')
     parser.add_argument('-n', '--number', type=int, default=1, help='How many passwords to generate (default: 1)')
     parser.add_argument('--no-lower', action='store_true', help='Exclude lowercase letters')
     parser.add_argument('--no-upper', action='store_true', help='Exclude uppercase letters')

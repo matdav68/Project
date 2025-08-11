@@ -3,4 +3,6 @@ print("Hello world")
 def myfun(name):
     print("Hello %s" % name)
 
-myfun("twin")
+if __name__ == '__main__':
+    name = input("Enter Name: ")
+    myfun(name)
